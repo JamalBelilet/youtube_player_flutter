@@ -25,6 +25,9 @@ class YoutubePlayer extends StatefulWidget {
   /// Current context of the player.
   final BuildContext context;
 
+  /// thumbnail of the current video.
+  final String thumbnail;
+
   /// The required videoId property specifies the YouTube Video ID of the video to be played.
   final String videoId;
 
@@ -87,6 +90,7 @@ class YoutubePlayer extends StatefulWidget {
     this.onPlayerInitialized,
     this.isLive = false,
     this.liveUIColor = Colors.red,
+    this.thumbnail,
   })  : assert(videoId.length == 11, "Invalid YouTube Video Id"),
         super(key: key);
 
@@ -222,11 +226,18 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
             controller: controller,
             autoPlay: widget.autoPlay,
           ),
-          controller.value.hasPlayed
+          controller.value.hasPlayed || widget.thumbnail == null
               ? Container()
-              : Image.network(
-                  "https://i3.ytimg.com/vi/${controller.initialSource}/sddefault.jpg",
-                  fit: BoxFit.cover,
+              // : Container(
+              //     color: Colors.red,
+              //     height: double.infinity,
+              //     width: double.infinity),
+              : Container(
+                  color: Colors.black,
+                  child: Image.network(
+                    widget.thumbnail,
+                    fit: BoxFit.cover,
+                  ),
                 ),
           widget.hideControls
               ? Container()

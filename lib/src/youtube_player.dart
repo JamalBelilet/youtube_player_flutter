@@ -486,7 +486,12 @@ class __PlayerState extends State<_Player> with AutomaticKeepAliveClientMixin {
           JavascriptChannel(
             name: 'CurrentTime',
             onMessageReceived: (JavascriptMessage message) {
-              double position = double.parse(message.message) * 1000;
+              double position;
+              try {
+                position = double.parse(message.message) * 1000;
+              } catch (e) {
+                position = 0;
+              }
               widget.controller.value = widget.controller.value.copyWith(
                 position: Duration(
                   milliseconds: position.floor(),

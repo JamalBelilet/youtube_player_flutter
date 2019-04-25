@@ -395,7 +395,7 @@ class __PlayerState extends State<_Player> with AutomaticKeepAliveClientMixin {
     return IgnorePointer(
       ignoring: true,
       child: WebView(
-        initialUrl: "https://www.youtube.com/watch?v=zeBfZD5r-Ec",
+        initialUrl: "https://sarbagyadhaubanjar.github.io/youtube_player",
         javascriptMode: JavascriptMode.unrestricted,
         iOSWebViewConfiguration: IOSWebViewConfiguration(
           allowsInlineMediaPlayback: true,

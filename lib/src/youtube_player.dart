@@ -502,8 +502,14 @@ class __PlayerState extends State<_Player> with AutomaticKeepAliveClientMixin {
           JavascriptChannel(
             name: 'LoadedFraction',
             onMessageReceived: (JavascriptMessage message) {
+              double positionLoadedFraction;
+              try {
+                positionLoadedFraction = double.parse(message.message) * 1000;
+              } catch (e) {
+                positionLoadedFraction = 0;
+              }
               widget.controller.value = widget.controller.value.copyWith(
-                buffered: double.parse(message.message),
+                buffered: positionLoadedFraction,
               );
             },
           ),

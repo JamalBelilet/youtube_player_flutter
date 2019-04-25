@@ -226,7 +226,9 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
             controller: controller,
             autoPlay: widget.autoPlay,
           ),
-          controller.value.hasPlayed || widget.thumbnail == null
+          (controller.value.isPlaying ||
+                      controller.value.playerState == PlayerState.PAUSED) ||
+                  widget.thumbnail == null
               ? Container()
               // : Container(
               //     color: Colors.red,

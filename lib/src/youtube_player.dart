@@ -236,6 +236,8 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
               //     width: double.infinity),
               : Container(
                   color: Colors.black,
+                  width: double.infinity,
+                  height: double.infinity,
                   child: Image.network(
                     widget.thumbnail,
                     fit: BoxFit.cover,

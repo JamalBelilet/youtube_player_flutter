@@ -5,6 +5,8 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import android.os.Handler;
+import android.os.Looper;
 
 /** YoutubePlayerFlutterPlugin */
 public class YoutubePlayerFlutterPlugin implements MethodCallHandler {

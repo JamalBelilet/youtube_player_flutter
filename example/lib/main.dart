@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double _volume = 100;
   bool _muted = false;
   String _playerStatus = "";
+  String _errorCode = '0';
 
   String _videoId = "iLnmTe5Q2Qw";
 
@@ -43,6 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     setState(() {
       _playerStatus = _controller.value.playerState.toString();
+      _errorCode = _controller.value.errorCode.toString();
+      print(_controller.value.toString());
     });
   }
 
@@ -82,9 +85,38 @@ class _MyHomePageState extends State<MyHomePage> {
             YoutubePlayer(
               context: context,
               videoId: _videoId,
+              mute: false,
               autoPlay: true,
+              forceHideAnnotation: false,
               showVideoProgressIndicator: true,
               videoProgressIndicatorColor: Colors.amber,
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 14.0,
+                  ),
+                  onPressed: () {},
+                ),
+                Text(
+                  'Hello! This is a test title.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w200,
+                  ),
+                ),
+                Spacer(),
+                IconButton(
+                  icon: Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                  onPressed: () {},
+                ),
+              ],
               progressColors: ProgressColors(
                 playedColor: Colors.amber,
                 handleColor: Colors.amberAccent,
@@ -223,7 +255,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Error Code: $_errorCode",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ],
               ),
             ),
